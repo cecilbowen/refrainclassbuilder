@@ -1,28 +1,15 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from 'prop-types';
 import * as Classes from "../classes";
 
-/*
-props:
-  className - name of character's class
-
-  asterKnight,
-  marginalMaze,
-  shinobushi,
-  peerFortress,
-  theatricalStar,
-  madRaptor,
-  gothicCoppelia,
-  demonReaper
-*/
-
-const asterKnight = ["./images/asterKnight.png"];
-const marginalMaze = ["./images/marginalMaze.png"];
-const shinobushi = ["./images/shinobushi.png"];
-const peerFortress = ["./images/peerFortress.png"];
-const theatricalStar = ["./images/theatricalStar.png"];
-const madRaptor = ["./images/madRaptor.png"];
-const gothicCoppelia = ["./images/gothicCoppelia.png"];
-const demonReaper = ["./images/demonReaper.png"];
+const asterKnight = ["asterKnight.png"];
+const marginalMaze = ["marginalMaze.png"];
+const shinobushi = ["shinobushi.png"];
+const peerFortress = ["peerFortress.png"];
+const theatricalStar = ["theatricalStar.png"];
+const madRaptor = ["madRaptor.png"];
+const gothicCoppelia = ["gothicCoppelia.png"];
+const demonReaper = ["demonReaper.png"];
 
 const images = [
   asterKnight,
@@ -35,24 +22,30 @@ const images = [
   demonReaper
 ];
 
-const CharacterPortrait = (props) => {
-  const [backgroundImage, setBackgroundImage] = useState();
+const CharacterPortrait = ({ className }) => {
+  const [backgroundImage, setBackgroundImage] = useState(className);
+
+  const grabCharacterPortrait = () => {
+    let index = Classes.names.indexOf(className);
+    const imageName = images[index][Math.floor(Math.random() * images[index].length)];
+    return `${process.env.PUBLIC_URL}/images/${imageName}`;
+  };
 
   useEffect(() => {
-    setBackgroundImage(grabCharacterPortrait(props.className));
-  }, [props.className]);
-
-  const grabCharacterPortrait = (className) => {
-    let index = Classes.names.indexOf(className);
-    return images[index][Math.floor(Math.random() * images[index].length)];
-  };
+    setBackgroundImage(grabCharacterPortrait());
+    console.log(className, grabCharacterPortrait());
+  }, [className]);
 
   return (
     <div
       className={"CharacterPortrait"}
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ backgroundImage: `url('${backgroundImage}')` }}
     ></div>
   );
+};
+
+CharacterPortrait.propTypes = {
+  className: PropTypes.string
 };
 
 export default CharacterPortrait;

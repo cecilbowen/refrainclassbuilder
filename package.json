@@ -1,16 +1,17 @@
 {
   "name": "coven-of-dusk-class-builder",
+  "homepage": "https://cecilbowen.github.io/refrainclassbuilder",
   "version": "1.0.0",
-  "description": "",
+  "description": "Visual class builder tool for use with the game Labyrinth of Refrain: Coven of Dusk",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-scripts": "4.0.0"
+    "react": "*",
+    "react-dom": "*",
+    "react-scripts": "*"
   },
   "devDependencies": {
-    "typescript": "4.1.3"
+    "@babel/plugin-proposal-private-property-in-object": "*"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -23,5 +24,14 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cecilbowen/refrainclassbuilder.git"
+  },
+  "author": "Cecil Bowen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cecilbowen/refrainclassbuilder/issues"
+  }
 }
